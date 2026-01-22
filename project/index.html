@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title> Bloons
+        </title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="login-screen">
+            <h1> Bloons Game </h1>
+            <button id="login"> Sign in as Guest</button>
+        </div>
+         <div id="lobby" hidden> <!--dont hide this when ready  -->
+            <h1> Bloons Game </h1>
+
+            <div>
+                <button id="create-game">Create Game</button>
+            </div>
+
+            <div>
+                <input id="room-code" type="text" placeholder="Enter room code" />
+                <button id="join-game">Join Game</button>
+                
+            </div>
+            <button id="logout"> Sign Out</button>
+        </div>
+
+        <!-- =======================
+         WAITING ROOM
+        ========================== -->
+        <div id="waiting-room" hidden>
+            <h2>Waiting for other player...</h2>
+            <p>Room Code: <span id="room"></span></p>
+            <button id="ready" hidden>Ready</button>
+            <button id="leave-room">Leave Room</button>
+        </div>
+
+        <!-- =======================
+         GAME SCREEN (UI + Both Boards)
+        ========================== -->
+        <div id="game-screen" hidden> <!-- hide this when ready  -->
+            <div id="hp-my">
+                <div id="hp-fill-my"></div>
+            </div>
+            <div id="money">
+            <svg id="money-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                </svg>
+                <span id="money-text">500</span>
+                
+            </div>
+            
+
+            <div id="game-container">
+                <div id="screens">
+        
+                    <div class="screen-wrapper">
+                        <canvas id="screen"></canvas>
+                        <div id="wave-display">
+                            Wave: <span id="wave">1</span>
+                        </div>
+                        
+                            
+                        <button id="button">&#9650;</button>
+
+                        <div id="shop">
+                            <div id="row">
+                                <div class="towers-sec">
+                                    <div class="title">Towers</div>
+                                    <div id="tower-icons">
+                                        <div class="tower"></div>
+                                    </div>
+                                </div>
+
+                                <div class="bloons-sec">
+                                    <div class="title">Bloons</div>
+                                    <div id="bloon-icons">
+                                        <div class="bloon red"></div>
+                                        <div class="bloon blue"></div>
+                                        <div class="bloon green"></div>
+                                        <div class="bloon yellow"></div>
+                                        <div class="bloon pink"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="screen-wrapper">
+                        <canvas id="remote-screen"></canvas>
+                        <div id="hp-enemy">
+                            <div id="hp-fill-enemy"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="end-screen" hidden>
+            <div id="end-message"></div>
+            <button id="end-button">Return to Lobby</button> 
+        </div>
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc, 
+            getDoc,
+            updateDoc,
+            onSnapshot,
+            collection,
+            arrayUnion,
+            arrayRemove,
+            deleteDoc,
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        import {
+        getAuth,
+        onAuthStateChanged,
+        signInAnonymously,
+        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
+        signOut
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        
+        window.firebase = {
+        // firebase
+        initializeApp,
+        getFirestore,
+        doc,
+        setDoc,
+        getDoc,
+        updateDoc,
+        onSnapshot,
+        collection,
+        arrayUnion,
+        arrayRemove,
+        deleteDoc,
+        // auth 
+        getAuth,
+        onAuthStateChanged,
+        signInAnonymously,
+        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
+        signOut
+        };
+        </script>
+        <script type="module" src="./dist/main.js"></script>
+    </body>
+
+    
+</html>
