@@ -12,3 +12,6 @@ Tower Defense Game built using TypeScript using Object Oriented Programming
 1. Install Dependencies
 2. Run Using Live Server
 3. Paste the Web Link on a Different Device
+
+##Note
+This project is not done and a lot of syntax is inconsistent as I got more and more burnt out
